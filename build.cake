@@ -1,7 +1,6 @@
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
-#addin nuget:?package=Cake.FileHelpers&version=3.2.0
 
-var target = Argument("target", string.Empty);
+var target = Argument("target", "Publish");
 var buildDir = Directory("./Build");
 
 Func<string, string, bool, string> Run = (fileName, cmd, ignoreExitCode) => {
@@ -45,7 +44,7 @@ Func<string> GetLatestCommit = () => {
 
 Func<string> GetProjectVersion = () => {
 	return GetStrStartsWith(
-		FileReadLines("ProjectSettings/ProjectSettings.asset"),
+	    System.IO.File.ReadAllLines("ProjectSettings/ProjectSettings.asset"),
 		"bundleVersion: ");
 };
 
@@ -55,10 +54,19 @@ Task("Clean")
 	CleanDirectory(buildDir);
 });
 
+Task("Update")
+	.Does(() =>
+{
+	Run("git", "reset --hard", false);
+	Run("git", "pull", false);
+	var latestCommit = GetLatestCommit();
+	Information($"Project updated to commit '{latestCommit}'");
+});
+
 Task("Build")
 	.Does(() =>
 {
-    Run("git", "checkout ProjectSettings/ProjectSettings.asset", false);
+	Run("git", "checkout ProjectSettings/ProjectSettings.asset", false);
 	var latestCommit = GetLatestCommit();
 	var version = GetProjectVersion() + "." + latestCommit;
 	var buildTarget = "WebGL";
@@ -74,9 +82,10 @@ Task("Upload")
 });
 
 Task("Publish")
-    .IsDependentOn("Clean")
-    .IsDependentOn("Build")
-    .IsDependentOn("Upload")
-    .Does(() => {});
+	.IsDependentOn("Update")
+	.IsDependentOn("Clean")
+	.IsDependentOn("Build")
+	.IsDependentOn("Upload")
+	.Does(() => {});
 
 RunTarget(target);
