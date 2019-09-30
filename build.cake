@@ -1,5 +1,4 @@
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
-#addin nuget:?package=Cake.FileHelpers&version=3.2.0
 
 var target = Argument("target", "Publish");
 var buildDir = Directory("./Build");
@@ -45,7 +44,7 @@ Func<string> GetLatestCommit = () => {
 
 Func<string> GetProjectVersion = () => {
 	return GetStrStartsWith(
-		FileReadLines("ProjectSettings/ProjectSettings.asset"),
+	    System.IO.File.ReadAllLines("ProjectSettings/ProjectSettings.asset"),
 		"bundleVersion: ");
 };
 
