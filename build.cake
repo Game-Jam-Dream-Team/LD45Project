@@ -78,7 +78,7 @@ Task("Upload")
 {
 	var version = GetProjectVersion();
 	var target = "konh/ld45-project:html";
-	Run("butler", $"push --userversion={version} --verbose Build {target}", false);
+	Run("./butler", $"push --userversion={version} --verbose Build {target}", false);
 });
 
 Task("Publish")
