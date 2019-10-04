@@ -25,7 +25,7 @@ Func<string, string, bool, string> Run = (fileName, cmd, ignoreExitCode) => {
 };
 
 Func<string, bool, string> RunUnity = (cmd, ignoreExitCode) => {
-	var unityPath = $"/Applications/Unity/Hub/Editor/2019.2.6f1/Unity.app/Contents/MacOS/Unity";
+	var unityPath = $"/Applications/Unity/Hub/Editor/2019.2.8f1/Unity.app/Contents/MacOS/Unity";
 	var fullCmd = cmd + $" -quit -batchmode -nographics -logFile -";
 	return Run(unityPath, fullCmd, ignoreExitCode);
 };
