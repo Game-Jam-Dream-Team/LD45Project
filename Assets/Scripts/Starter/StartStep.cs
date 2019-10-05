@@ -8,7 +8,7 @@ public abstract class StartStep {
 	bool _finished;
 	float _timer;
 
-	public bool Update() {
+    public bool Update() {
 		if ( !_started ) {
 			OnStart();
 			_started = true;

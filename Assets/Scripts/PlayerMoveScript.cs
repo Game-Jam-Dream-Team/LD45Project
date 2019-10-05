@@ -9,11 +9,16 @@ public class PlayerMoveScript : MonoBehaviour
     Vector3 impulseDirection;
     Vector3 currentPosition;
     Vector3 impulse;
+    Vector3 PlayerStartPosition;
+
 
     Vector3 mousePosition;
     Rigidbody2D rb;
     Transform _objectHolder;
     Animator _animator;
+
+    Vector3 heading;
+    float maxRange = 0.03f;
 
     DirectionPointer _pointer;
 
@@ -29,6 +34,7 @@ public class PlayerMoveScript : MonoBehaviour
     ObjectScript _grabbedObject;
     ObjectScript grabbedObject
     {
+
         get => _grabbedObject;
         set
         {
@@ -41,6 +47,9 @@ public class PlayerMoveScript : MonoBehaviour
 
     static readonly int HoldAnimation = Animator.StringToHash("PlayerHoldAnimation");
     static readonly int IdleAnimation = Animator.StringToHash("PlayerIdleAnimation");
+
+       
+
 
     void Awake()
     {
@@ -106,4 +115,5 @@ public class PlayerMoveScript : MonoBehaviour
             Pointer.Show();
         }
     }
+
 }
