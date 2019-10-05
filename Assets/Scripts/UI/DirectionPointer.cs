@@ -15,7 +15,7 @@ public class DirectionPointer: MonoBehaviour {
 		var position = new Vector2(transform.position.x, transform.position.y);
         var mousePos = (Vector2)DirectionUtils.GetCurrentMousePosition();
 		_line.SetPosition(0, position);
-        var playerToMousePosVector = mousePos - position;
+        var playerToMousePosVector = (mousePos - position).normalized;
         _line.SetPosition(1, position + (-playerToMousePosVector * Length));
 	}
 }
