@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectScript : MonoBehaviour
 {
     public float objectMass = 5f;
-    public float tilt = 1f;
+    public float tilt;
 
     
     // Start is called before the first frame update

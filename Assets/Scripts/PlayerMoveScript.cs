@@ -66,7 +66,7 @@ public class PlayerMoveScript : MonoBehaviour
 
 
                 throwObject(impulseDirection);
-                rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
+
 
             }
         }
@@ -74,10 +74,12 @@ public class PlayerMoveScript : MonoBehaviour
 
     private void throwObject(Vector3 impulseDirection)
     {
+
         rb.mass -= grabbedObject.objectMass;
         grabbedObject.transform.SetParent(null);
-      //  grabbedObject.GetComponent<Collider2D>().enabled = false;
-        grabbedObject.GetComponent<Rigidbody2D>().velocity = -impulseDirection;
+        rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
+        //  grabbedObject.GetComponent<Collider2D>().enabled = false;
+        grabbedObject.GetComponent<Rigidbody2D>().velocity = -rb.velocity;
         grabbedObject.tilt = -1f;
         grabbedObject = null;
 
