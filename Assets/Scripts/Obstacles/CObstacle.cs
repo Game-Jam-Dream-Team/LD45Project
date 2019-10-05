@@ -2,7 +2,7 @@
 
 public class CObstacle : CAbstractCollisionZone
 {
-    protected override void ProcessPlayerCollision()
+    protected override void ProcessPlayerCollision(PlayerMoveScript player)
     {
         SceneController.Instance.ReloadCurrent();
     }
