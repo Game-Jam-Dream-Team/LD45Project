@@ -22,6 +22,10 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    public void FirstLevel() {
+        SceneManager.LoadScene(1);
+    }
+
     public void NextLevel()
     {
         var current = SceneManager.GetActiveScene().name;
