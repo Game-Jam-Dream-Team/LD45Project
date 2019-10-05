@@ -34,22 +34,13 @@ public class PlayerMoveScript : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    void Update()
     {
-     //   Debug.Log(transform.position);
         if (Input.GetMouseButtonDown(0))
         {
-
             currentPosition = Camera.main.WorldToScreenPoint(transform.position);
             mousePosition = Input.mousePosition;
-
             impulseDirection = (currentPosition - mousePosition).normalized;
-            Debug.Log(impulseDirection);
-
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
 
             if (!isStarted)
             {
@@ -63,11 +54,7 @@ public class PlayerMoveScript : MonoBehaviour
 
             if (grabbedObject != null)
             {
-
-
                 throwObject(impulseDirection);
-
-
             }
         }
     }

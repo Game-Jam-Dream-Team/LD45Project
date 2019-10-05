@@ -16,7 +16,7 @@ public class GameStarter : MonoBehaviour {
 	}
 
 	void Update() {
-		if ( Ship.Update() && Item.Update() && Player.Update() ) {
+		if ( (Ship.Update() || Item.Update()) && Player.Update() ) {
 			enabled = false;
 		}
 	}
