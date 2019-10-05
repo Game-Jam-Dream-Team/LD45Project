@@ -8,3 +8,4 @@ obj
 *.csproj
 Build
 tools
+.vs
