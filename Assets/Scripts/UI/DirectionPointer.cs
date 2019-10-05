@@ -11,9 +11,11 @@ public class DirectionPointer: MonoBehaviour {
 	}
 
 	void Update() {
-		var position = DirectionUtils.GetMouseDirectionTo(transform.position);
-		var inversedPosition = new Vector2(-position.x, -position.y);
-		var target = new Vector3(inversedPosition.x, inversedPosition.y, 0);
+		var position = transform.position;
+		var mouseDirection = DirectionUtils.GetMouseDirectionTo(position);
+		var inversedDirection = new Vector2(-mouseDirection.x, -mouseDirection.y);
+		var target = new Vector3(inversedDirection.x, inversedDirection.y, 0);
+		_line.SetPosition(0, new Vector3(position.x, position.y, 0));
 		_line.SetPosition(1, target * Length);
 	}
 }
