@@ -1,4 +1,4 @@
-# LD45Project
+# The Hobo’s Guide to the Galaxy
 
 ## Build
 

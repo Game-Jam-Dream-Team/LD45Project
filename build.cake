@@ -77,7 +77,7 @@ Task("Upload")
 	.Does(() =>
 {
 	var version = GetProjectVersion();
-	var target = "konh/ld45-project:html";
+	var target = "konh/the-hobo-s-guide-to-the-galaxy:html";
 	Run("./butler", $"push --userversion={version} --verbose Build {target}", false);
 });
 
