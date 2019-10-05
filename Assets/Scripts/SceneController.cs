@@ -22,8 +22,15 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public void NextLevel()
-    {
+    public bool WasReloaded { get; private set; }
+
+    public void FirstLevel() {
+        WasReloaded = false;
+        SceneManager.LoadScene(1);
+    }
+
+    public void NextLevel() {
+        WasReloaded = false;
         var current = SceneManager.GetActiveScene().name;
         var lvlNumber = int.Parse(Regex.Match(current, @"(\d+)").Value);
         lvlNumber++;
@@ -40,8 +47,8 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public void ReloadCurrent()
-    {
+    public void ReloadCurrent() {
+        WasReloaded = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

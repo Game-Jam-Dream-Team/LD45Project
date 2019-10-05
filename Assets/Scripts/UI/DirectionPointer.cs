@@ -6,16 +6,29 @@ public class DirectionPointer: MonoBehaviour {
 
 	LineRenderer _line;
 
-	void Awake() {
-		_line = GetComponent<LineRenderer>();
+	LineRenderer Line {
+		get {
+			if ( !_line ) {
+				_line = GetComponent<LineRenderer>();
+			}
+			return _line;
+		}
+	}
+
+	public void Show() {
+		Line.enabled = true;
+	}
+
+	public void Hide() {
+		Line.enabled = false;
 	}
 
 	void Update()
     {
 		var position = new Vector2(transform.position.x, transform.position.y);
         var mousePos = (Vector2)DirectionUtils.GetCurrentMousePosition();
-		_line.SetPosition(0, position);
-        var playerToMousePosVector = mousePos - position;
-        _line.SetPosition(1, position + (-playerToMousePosVector * Length));
+		Line.SetPosition(0, position);
+        var playerToMousePosVector = (mousePos - position).normalized;
+        Line.SetPosition(1, position + (-playerToMousePosVector * Length));
 	}
 }
