@@ -1,9 +1,16 @@
-﻿using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class CFinishZone : CAbstractCollisionZone
 {
+    public GameObject ResultPanel;
+
     protected override void ProcessPlayerCollision()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        FinishLevel();
+    }
+
+    private void FinishLevel()
+    {
+        ResultPanel.SetActive(true);
     }
 }
