@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMoveScript : MonoBehaviour
 {
@@ -18,8 +15,17 @@ public class PlayerMoveScript : MonoBehaviour
     ObjectScript grabbedObject;
     bool isStarted = false;
     Rigidbody2D rb;
-    
 
+    DirectionPointer _pointer;
+
+    DirectionPointer Pointer {
+        get {
+            if ( !_pointer ) {
+                _pointer = GetComponentInChildren<DirectionPointer>();
+            }
+            return _pointer;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +55,9 @@ public class PlayerMoveScript : MonoBehaviour
             {
                 isStarted = true;
                 rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
+
+                Pointer.Hide();
+
                 return;
             }
 
@@ -71,6 +80,8 @@ public class PlayerMoveScript : MonoBehaviour
         grabbedObject.GetComponent<Rigidbody2D>().velocity = -impulseDirection;
         grabbedObject.tilt = -1f;
         grabbedObject = null;
+
+        Pointer.Hide();
 
     }
 
@@ -102,6 +113,8 @@ public class PlayerMoveScript : MonoBehaviour
             rb.AddForce(-impulseDirection * playerSpeed, ForceMode2D.Impulse);
             rb.mass += grabbedObject.objectMass;
             rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
+
+            Pointer.Show();
         }
 
     }

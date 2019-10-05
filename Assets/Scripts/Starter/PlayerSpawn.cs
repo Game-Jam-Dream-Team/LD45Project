@@ -12,6 +12,7 @@ public class PlayerSpawn : StartStep {
 	public void Init() {
 		var go = GameObject.FindGameObjectWithTag("player");
 		go.GetComponent<Collider2D>().enabled = false;
+		go.GetComponentInChildren<DirectionPointer>().Hide();
 		_target = go.transform;
 		_endPosition = _target.position;
 		_target.SetParent(Root);
@@ -25,5 +26,6 @@ public class PlayerSpawn : StartStep {
 
 	protected override void OnFinish() {
 		_target.GetComponent<Collider2D>().enabled = true;
+		_target.GetComponentInChildren<DirectionPointer>().Show();
 	}
 }
