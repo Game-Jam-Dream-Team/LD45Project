@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class PlayerMoveScript : MonoBehaviour
 {
     public float playerSpeed = 0.5f;
     public float playerStartSpeed = 0.3f;
-
+    public AudioClip deathCry;
+       
     Vector3 dropDirection;
     Vector3 impulseDirection;
     Vector3 currentPosition;
     Vector3 impulse;
     Vector3 PlayerStartPosition;
-
 
     Vector3 mousePosition;
     Rigidbody2D rb;
@@ -114,6 +115,16 @@ public class PlayerMoveScript : MonoBehaviour
 
             Pointer.Show();
         }
+    }
+
+    public void playDeathSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(deathCry);
+    }
+
+    public void playerSpriteHide()
+    {
+        GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = false);
     }
 
 }
