@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
-    public float objectMass = 5f;
+    public float objectMass = 1f;
     public float tilt;
 
     

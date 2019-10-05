@@ -3,7 +3,7 @@ using System.Linq;
 
 public class PlayerMoveScript : MonoBehaviour
 {
-    public float playerSpeed = 0.5f;
+    public float playerMass = 0.5f;
     public float playerStartSpeed = 0.3f;
     public AudioClip deathCry;
     public ParticleSystem DeathEffect;
@@ -78,9 +78,10 @@ public class PlayerMoveScript : MonoBehaviour
 
     private void throwObject(Vector3 impulseDirection)
     {
-        rb.mass -= grabbedObject.objectMass;
+        //  rb.mass -= grabbedObject.objectMass;
+        playerMass -= grabbedObject.objectMass;
         grabbedObject.transform.SetParent(null);
-        rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
+        rb.AddForce(impulseDirection / playerMass, ForceMode2D.Impulse);
         grabbedObject.GetComponent<Rigidbody2D>().velocity = -rb.velocity;
         grabbedObject.tilt = -1f;
         grabbedObject = null;
@@ -110,9 +111,10 @@ public class PlayerMoveScript : MonoBehaviour
             grabbedObject.GetComponent<Collider2D>().enabled = false;
             grabbedObject.tilt = 0f;
 
-            rb.AddForce(-impulseDirection * playerSpeed, ForceMode2D.Impulse);
-            rb.mass += grabbedObject.objectMass;
-            rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
+            rb.AddForce(-impulseDirection / playerMass, ForceMode2D.Impulse);
+            // rb.mass += grabbedObject.objectMass;
+            playerMass += grabbedObject.objectMass;
+            rb.AddForce(impulseDirection / playerMass, ForceMode2D.Impulse);
 
             Pointer.Show();
         }
