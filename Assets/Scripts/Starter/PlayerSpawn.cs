@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -49,6 +48,6 @@ public class PlayerSpawn : StartStep {
 		_target.GetComponentInChildren<DirectionPointer>().Show();
         _target.GetComponent<RotatePlayerToCursor>().enabled = true;
 
-
+        foreach (GameObject s in GameObject.FindGameObjectsWithTag("spawner")) { s.GetComponent<ObstaclesSpawner>()?.Activate(); }
     }
 }

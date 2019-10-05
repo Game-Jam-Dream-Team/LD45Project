@@ -41,7 +41,6 @@ public class PlayerMoveScript : MonoBehaviour
         set
         {
             _grabbedObject = value;
-            Debug.Log(_grabbedObject);
             var anim = _grabbedObject != null ? HoldAnimation : IdleAnimation;
             _animator.Play(anim);
         }

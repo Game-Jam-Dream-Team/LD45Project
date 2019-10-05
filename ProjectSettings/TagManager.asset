@@ -9,6 +9,7 @@ TagManager:
   - object
   - FxTemporaire
   - ship
+  - spawner
   layers:
   - Default
   - TransparentFX

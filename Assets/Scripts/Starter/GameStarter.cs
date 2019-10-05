@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class GameStarter : MonoBehaviour {
 	public ShipMovement Ship;
@@ -10,7 +11,10 @@ public class GameStarter : MonoBehaviour {
 			Ship.Target.transform.position = Ship.EndPosition.position;
             Ship.EngineParticles.Stop();
 			enabled = false;
-			return;
+
+            foreach (GameObject s in GameObject.FindGameObjectsWithTag("spawner")) { s.GetComponent<ObstaclesSpawner>()?.Activate(); }
+
+            return;
 		}
 		Item.Init();
 		Player.Init();
