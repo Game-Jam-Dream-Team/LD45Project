@@ -42,16 +42,6 @@ public class PlayerMoveScript : MonoBehaviour
             mousePosition = Input.mousePosition;
             impulseDirection = (currentPosition - mousePosition).normalized;
 
-            if (!isStarted)
-            {
-                isStarted = true;
-                rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
-
-                Pointer.Hide();
-
-                return;
-            }
-
             if (grabbedObject != null)
             {
                 throwObject(impulseDirection);
