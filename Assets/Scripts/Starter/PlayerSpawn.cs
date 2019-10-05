@@ -13,6 +13,9 @@ public class PlayerSpawn : StartStep {
 		var go = GameObject.FindGameObjectWithTag("player");
 		go.GetComponent<Collider2D>().enabled = false;
 		go.GetComponentInChildren<DirectionPointer>().Hide();
+		foreach ( var renderer in go.GetComponentsInChildren<Renderer>() ) {
+			renderer.enabled = false;
+		}
 		_target = go.transform;
 		_endPosition = _target.position;
 		_target.SetParent(Root);
@@ -22,6 +25,12 @@ public class PlayerSpawn : StartStep {
 	protected override void Perform(float t) {
 		var startPosition = Root.transform.position;
 		_target.position = Vector3.Lerp(startPosition, _endPosition, t);
+	}
+
+	protected override void OnStart() {
+		foreach ( var renderer in _target.GetComponentsInChildren<Renderer>() ) {
+			renderer.enabled = true;
+		}
 	}
 
 	protected override void OnFinish() {
