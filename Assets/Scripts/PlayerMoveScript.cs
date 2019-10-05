@@ -69,7 +69,9 @@ public class PlayerMoveScript : MonoBehaviour
         grabbedObject.transform.SetParent(null);
       //  grabbedObject.GetComponent<Collider2D>().enabled = false;
         grabbedObject.GetComponent<Rigidbody2D>().velocity = -impulseDirection;
+        grabbedObject.tilt = -1f;
         grabbedObject = null;
+
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -94,6 +96,7 @@ public class PlayerMoveScript : MonoBehaviour
             obj.transform.position = transform.position + new Vector3(0.5f, 0, 0);
             obj.transform.SetParent(transform);
             grabbedObject.GetComponent<Collider2D>().enabled = false;
+            grabbedObject.tilt = 0f;
 
 
             rb.AddForce(-impulseDirection * playerSpeed, ForceMode2D.Impulse);
