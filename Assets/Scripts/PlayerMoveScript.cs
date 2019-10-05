@@ -7,6 +7,7 @@ public class PlayerMoveScript : MonoBehaviour
 {
 
     public float playerSpeed = 0.5f;
+    public float playerStartSpeed = 0.3f;
   //  public int playerMass;
     Vector3 dropDirection;
     Vector3 impulseDirection;
@@ -24,6 +25,7 @@ public class PlayerMoveScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     void FixedUpdate()
@@ -42,6 +44,7 @@ public class PlayerMoveScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+
             if (!isStarted)
             {
                 isStarted = true;
