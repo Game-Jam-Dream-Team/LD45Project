@@ -6,6 +6,11 @@ public class GameStarter : MonoBehaviour {
 	public PlayerSpawn Player;
 
 	void Awake() {
+		if ( SceneController.Instance.WasReloaded ) {
+			Ship.Target.transform.position = Ship.EndPosition.position;
+			enabled = false;
+			return;
+		}
 		Item.Init();
 		Player.Init();
 	}
