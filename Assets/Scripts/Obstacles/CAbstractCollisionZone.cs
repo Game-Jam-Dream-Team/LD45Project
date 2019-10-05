@@ -14,11 +14,11 @@ public abstract class CAbstractCollisionZone : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("player"))
         {
-            ProcessPlayerCollision();
+            ProcessPlayerCollision(collision.GetComponent<PlayerMoveScript>());
         }
     }
 
-    protected virtual void ProcessPlayerCollision()
+    protected virtual void ProcessPlayerCollision(PlayerMoveScript player)
     {
         // override me
     }
