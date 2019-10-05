@@ -25,7 +25,7 @@ public class SceneController : MonoBehaviour
     public void NextLevel()
     {
         var current = SceneManager.GetActiveScene().name;
-        var lvlNumber = int.Parse(Regex.Match("Level_12", @"(\d+)").Value);
+        var lvlNumber = int.Parse(Regex.Match(current, @"(\d+)").Value);
         lvlNumber++;
 
         var sceneName = $"Level{lvlNumber}";
