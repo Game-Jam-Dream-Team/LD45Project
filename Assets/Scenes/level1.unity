@@ -657,6 +657,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!4 &1822449521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8531089755262680565, guid: 61ba73ae170cae747aafd0df87e0aa04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1170383330077376881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2059159575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -932,5 +938,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5060702276070919433, guid: 1c03e5d0ffe4c453fbc7fe915b6a1cca,
+        type: 3}
+      propertyPath: Ship.EndPosition
+      value: 
+      objectReference: {fileID: 1822449521}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c03e5d0ffe4c453fbc7fe915b6a1cca, type: 3}
