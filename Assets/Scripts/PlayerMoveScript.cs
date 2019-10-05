@@ -6,6 +6,7 @@ public class PlayerMoveScript : MonoBehaviour
     public float playerSpeed = 0.5f;
     public float playerStartSpeed = 0.3f;
     public AudioClip deathCry;
+    public ParticleSystem DeathEffect;
        
     Vector3 dropDirection;
     Vector3 impulseDirection;
@@ -127,4 +128,8 @@ public class PlayerMoveScript : MonoBehaviour
         GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = false);
     }
 
+    public void PlayDeathEffect()
+    {
+        DeathEffect.Play();
+    }
 }

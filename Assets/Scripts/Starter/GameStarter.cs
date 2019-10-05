@@ -8,6 +8,7 @@ public class GameStarter : MonoBehaviour {
 	void Awake() {
 		if ( SceneController.Instance.WasReloaded ) {
 			Ship.Target.transform.position = Ship.EndPosition.position;
+            Ship.EngineParticles.Stop();
 			enabled = false;
 			return;
 		}

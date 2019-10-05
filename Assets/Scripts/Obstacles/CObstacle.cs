@@ -14,6 +14,7 @@ public class CObstacle : CAbstractCollisionZone
     {
         player.playerSpriteHide();
         player.playDeathSound();
+        player.PlayDeathEffect();
         yield return new WaitForSeconds(1f);
         SceneController.Instance.ReloadCurrent();
     }

@@ -7,6 +7,8 @@ TagManager:
   - player
   - obstacle
   - object
+  - FxTemporaire
+  - ship
   layers:
   - Default
   - TransparentFX
