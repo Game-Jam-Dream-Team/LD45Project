@@ -6,8 +6,10 @@ using UnityEngine;
 public class ItemSpawn : StartStep {
 	class Entry {
 		public Transform Transform;
-		public Vector3 Position;
+		public Vector3 StartPosition;
+		public Vector3 EndPosition;
 		public float StartTime;
+		public bool Started;
 	}
 
 	public Transform Root;
@@ -21,7 +23,7 @@ public class ItemSpawn : StartStep {
 			var entry = _entries[i];
 			entry.Transform.SetParent(Root);
 			entry.Transform.localPosition = Vector3.zero;
-			entry.StartTime = Mathf.Lerp(0, 1, ((float)i)/_entries.Length);
+			entry.StartTime = Mathf.Lerp(0.25f, 1, ((float)i)/_entries.Length);
 		}
 	}
 
@@ -32,18 +34,21 @@ public class ItemSpawn : StartStep {
 	}
 
 	protected override void Perform(float t) {
-		var startPosition = Root.transform.position;
 		foreach ( var entry in _entries ) {
 			if ( t < entry.StartTime ) {
 				continue;
 			}
+			if ( !entry.Started ) {
+				entry.StartPosition = Root.transform.position;
+				entry.Started = true;
+			}
 			var entryTime = (t - entry.StartTime) / (1 - entry.StartTime);
-			entry.Transform.position = Vector3.Lerp(startPosition, entry.Position, entryTime);
+			entry.Transform.position = Vector3.Lerp(entry.StartPosition, entry.EndPosition, entryTime);
 		}
 	}
 
 	Entry ToEntry(GameObject go) {
 		var trans = go.transform;
-		return new Entry { Transform = trans, Position = trans.position };
+		return new Entry { Transform = trans, EndPosition = trans.position };
 	}
 }
