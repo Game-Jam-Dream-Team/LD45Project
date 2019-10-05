@@ -67,7 +67,7 @@ public class PlayerMoveScript : MonoBehaviour
     {
         rb.mass -= grabbedObject.objectMass;
         grabbedObject.transform.SetParent(null);
-        grabbedObject.GetComponent<Collider2D>().enabled = false;
+      //  grabbedObject.GetComponent<Collider2D>().enabled = false;
         grabbedObject.GetComponent<Rigidbody2D>().velocity = -impulseDirection;
         grabbedObject = null;
     }
@@ -91,13 +91,14 @@ public class PlayerMoveScript : MonoBehaviour
         else
         {
             grabbedObject = obj.GetComponent<ObjectScript>();
+            obj.transform.position = transform.position + new Vector3(0.5f, 0, 0);
             obj.transform.SetParent(transform);
+            grabbedObject.GetComponent<Collider2D>().enabled = false;
+
 
             rb.AddForce(-impulseDirection * playerSpeed, ForceMode2D.Impulse);
             rb.mass += grabbedObject.objectMass;
             rb.AddForce(impulseDirection * playerSpeed, ForceMode2D.Impulse);
-
-
         }
 
     }
