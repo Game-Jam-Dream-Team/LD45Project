@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DirectionPointer: MonoBehaviour {
 	public float TimeToChange;
+    private bool _isHidden = false;
 
 	SpriteRenderer[] _lines;
 
@@ -17,11 +18,14 @@ public class DirectionPointer: MonoBehaviour {
 	int _index = 0;
 
 	public void Show() {
-		Lines[_index].enabled = true;
+        _isHidden = false;
+        Lines[_index].enabled = true;
 	}
 
 	public void Hide() {
-		foreach ( var line in Lines ) {
+        _isHidden = true;
+
+        foreach ( var line in Lines ) {
 			line.enabled = false;
 		}
 	}
@@ -37,6 +41,11 @@ public class DirectionPointer: MonoBehaviour {
 	}
 
 	void Change() {
+        if (_isHidden)
+        {
+            return;
+        }
+
 		_index++;
 		if ( _index == Lines.Length ) {
 			_index = 0;

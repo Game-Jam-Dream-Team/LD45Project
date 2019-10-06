@@ -143,6 +143,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     public void PlayerHide()
     {
+        _pointer.Hide();
         GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = false);
         GetComponent<Collider2D>().enabled = false;
     }
