@@ -43,7 +43,9 @@ public class PlayerSpawn : StartStep {
 		foreach ( var renderer in _target.GetComponentsInChildren<Renderer>() ) {
 			renderer.enabled = true;
 		}
-		Sound.Play();
+		if ( Sound ) {
+			Sound.Play();
+		}
 	}
 
 	protected override void OnFinish() {

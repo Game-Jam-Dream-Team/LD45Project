@@ -42,7 +42,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8424849353572031976, guid: ef42ee2fdf7c44bd0875bec234a00172,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 0ca61c40f4ba94e68a4607b39c86cf82, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5ed5e05bb762643868d9b5089e935acf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -170,7 +170,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -102081925289604460, guid: ef42ee2fdf7c44bd0875bec234a00172,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5ed5e05bb762643868d9b5089e935acf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0ca61c40f4ba94e68a4607b39c86cf82, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -792,6 +792,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8897939863823662835}
     m_Modifications:
+    - target: {fileID: 19800018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
       propertyPath: m_Name
       value: WinEffect (1)
@@ -889,10 +893,6 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 19800016, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
-      propertyPath: startDelay.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
       propertyPath: startDelay.scalar
       value: 0.4
       objectReference: {fileID: 0}
