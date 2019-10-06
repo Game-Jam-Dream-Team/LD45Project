@@ -1,5 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
@@ -24,31 +26,47 @@ public class SceneController : MonoBehaviour
 
     public bool WasReloaded { get; private set; }
 
+    int LevelIndex { get; set; }
+    int Tries { get; set; }
+
     public void FirstLevel() {
-        WasReloaded = false;
+        AnalyticsEvent.FirstInteraction();
+        OnStartLevel(LevelIndex, false);
         SceneManager.LoadScene(1);
     }
 
     public void NextLevel() {
-        WasReloaded = false;
         var current = SceneManager.GetActiveScene().name;
         var lvlNumber = int.Parse(Regex.Match(current, @"(\d+)").Value);
         lvlNumber++;
 
         var sceneName = $"Level{lvlNumber}";
-        if (Application.CanStreamedLevelBeLoaded(sceneName))
-        {
+        if (Application.CanStreamedLevelBeLoaded(sceneName)) {
+            OnStartLevel(LevelIndex, false);
             SceneManager.LoadScene(sceneName);
         }
     }
 
-    public void ToMenu()
-    {
+    public void ToMenu() {
+        Tries = 0;
         SceneManager.LoadScene("Menu");
     }
 
     public void ReloadCurrent() {
-        WasReloaded = true;
+        OnStartLevel(LevelIndex, true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void OnStartLevel(int levelIndex, bool reload) {
+        LevelIndex = levelIndex;
+        WasReloaded = reload;
+        if ( WasReloaded ) {
+            Tries = 0;
+            AnalyticsEvent.GameOver($"Level{LevelIndex}");
+        } else {
+            Tries++;
+        }
+        var dict = new Dictionary<string, object> { { "tries", Tries } };
+        AnalyticsEvent.LevelStart($"Level{LevelIndex}", dict);
     }
 }
