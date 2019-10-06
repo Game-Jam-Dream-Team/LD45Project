@@ -9,6 +9,7 @@ public class CFinishZone : CAbstractCollisionZone
     {
         player.PlayerHide();
         player.PlayWinEffect();
+        player.StopMoving();
         FinishLevel();
     }
 

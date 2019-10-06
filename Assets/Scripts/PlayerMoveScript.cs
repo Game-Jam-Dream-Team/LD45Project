@@ -150,4 +150,9 @@ public class PlayerMoveScript : MonoBehaviour
     {
         WinEffect.Play();
     }
+
+    public void StopMoving()
+    {
+        rb.velocity = Vector3.zero;
+    }
 }
