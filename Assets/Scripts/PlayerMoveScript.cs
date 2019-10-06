@@ -4,7 +4,8 @@ using System.Linq;
 public class PlayerMoveScript : MonoBehaviour
 {
     public float playerMass = 0.5f;
-    public float playerStartSpeed = 0.3f;
+    // float lastObjectVelocityK;
+    float playerSpeedK;
     public AudioClip deathCry;
     public ParticleSystem DeathEffect;
        
@@ -21,6 +22,8 @@ public class PlayerMoveScript : MonoBehaviour
 
     Vector3 heading;
     float maxRange = 0.03f;
+
+    bool isStarted = false;
 
     DirectionPointer _pointer;
 
@@ -58,6 +61,7 @@ public class PlayerMoveScript : MonoBehaviour
         _objectHolder = transform.Find("ObjectHolder");
         _animator = GetComponent<Animator>();
         grabbedObject = null;
+        playerSpeedK = 6f;
     }
 
     void Update()
@@ -78,12 +82,17 @@ public class PlayerMoveScript : MonoBehaviour
     private void throwObject(Vector3 impulseDirection)
     {
         //  rb.mass -= grabbedObject.objectMass;
-        playerMass -= grabbedObject.objectMass;
+
+
+        //  playerMass -= grabbedObject.objectMass;
+        rb.velocity = impulseDirection * playerSpeedK;
+
         grabbedObject.transform.SetParent(null);
-        rb.AddForce(impulseDirection / playerMass, ForceMode2D.Impulse);
+     //   rb.AddForce(impulseDirection / playerMass, ForceMode2D.Impulse);
         grabbedObject.GetComponent<Rigidbody2D>().velocity = -rb.velocity;
         grabbedObject.tilt = -1f;
         grabbedObject = null;
+
 
         Pointer.Hide();
     }
@@ -110,10 +119,11 @@ public class PlayerMoveScript : MonoBehaviour
             grabbedObject.GetComponent<Collider2D>().enabled = false;
             grabbedObject.tilt = 0f;
 
-            rb.AddForce(-impulseDirection / playerMass, ForceMode2D.Impulse);
+            //    rb.AddForce(-impulseDirection / playerMass, ForceMode2D.Impulse); //player stops
             // rb.mass += grabbedObject.objectMass;
-            playerMass += grabbedObject.objectMass;
-            rb.AddForce(impulseDirection / playerMass, ForceMode2D.Impulse);
+            //    playerMass += grabbedObject.objectMass;
+            //    rb.AddForce(impulseDirection / playerMass, ForceMode2D.Impulse);
+            rb.velocity = impulseDirection * grabbedObject.objectVelocityK;
 
             Pointer.Show();
         }

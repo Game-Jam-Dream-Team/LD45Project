@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectScript : MonoBehaviour
 {
     public float objectMass = 1f;
+    public float objectVelocityK;
     public float tilt;
 
     
