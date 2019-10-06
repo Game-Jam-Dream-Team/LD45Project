@@ -1,34 +1,47 @@
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
 public class DirectionPointer: MonoBehaviour {
-	public float Length;
+	public float TimeToChange;
 
-	LineRenderer _line;
+	SpriteRenderer[] _lines;
 
-	LineRenderer Line {
+	SpriteRenderer[] Lines {
 		get {
-			if ( !_line ) {
-				_line = GetComponent<LineRenderer>();
+			if ( _lines == null ) {
+				_lines = GetComponentsInChildren<SpriteRenderer>();
 			}
-			return _line;
+			return _lines;
 		}
 	}
 
+	int _index = 0;
+
 	public void Show() {
-		Line.enabled = true;
+		Lines[_index].enabled = true;
 	}
 
 	public void Hide() {
-		Line.enabled = false;
+		foreach ( var line in Lines ) {
+			line.enabled = false;
+		}
 	}
 
-	void Update()
-    {
-		var position = new Vector2(transform.position.x, transform.position.y);
-        var mousePos = (Vector2)DirectionUtils.GetCurrentMousePosition();
-		Line.SetPosition(0, position);
-        var playerToMousePosVector = (mousePos - position).normalized;
-        Line.SetPosition(1, position + (-playerToMousePosVector * Length));
+	float _timer;
+
+	void Update() {
+	    _timer += Time.deltaTime * (1 / TimeToChange);
+	    if ( _timer > 1.0f ) {
+		    _timer = 0.0f;
+		    Change();
+	    }
+	}
+
+	void Change() {
+		_index++;
+		if ( _index == Lines.Length ) {
+			_index = 0;
+		}
+		Hide();
+		Show();
 	}
 }
