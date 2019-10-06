@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class PlayerMoveScript : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PlayerMoveScript : MonoBehaviour
     public ParticleSystem WinEffect;
     public AudioSource TakeSound;
     public AudioSource ThrowSound;
+    
+
+    public static UnityEvent OnObjectgrabbed = new UnityEvent();
 
     Vector3 dropDirection;
     Vector3 impulseDirection;
@@ -106,6 +110,8 @@ public class PlayerMoveScript : MonoBehaviour
         if (coll.gameObject.tag == "object")
         {
             processObjectCollision(coll.gameObject);
+            OnObjectgrabbed.Invoke();
+
         }
     }
 

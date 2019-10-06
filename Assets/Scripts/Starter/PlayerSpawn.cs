@@ -1,10 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class PlayerSpawn : StartStep {
 	public Transform Root;
 	public AudioSource Sound;
+
+    public static UnityEvent OnPlayerInitFinish = new UnityEvent();
+   
 
     float tilt = 3f;
 
@@ -52,6 +56,10 @@ public class PlayerSpawn : StartStep {
 		_target.GetComponent<Collider2D>().enabled = true;
 		_target.GetComponentInChildren<DirectionPointer>().Show();
         _target.GetComponent<RotatePlayerToCursor>().enabled = true;
+        OnPlayerInitFinish.Invoke();
+
+
+        
 
         foreach (GameObject s in GameObject.FindGameObjectsWithTag("spawner")) { s.GetComponent<ObstaclesSpawner>()?.Activate(); }
     }
