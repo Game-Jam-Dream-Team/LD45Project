@@ -13,6 +13,7 @@ public class ItemSpawn : StartStep {
 	}
 
 	public Transform Root;
+	public AudioSource Sound;
 
 	Entry[] _entries;
 
@@ -41,6 +42,7 @@ public class ItemSpawn : StartStep {
 			if ( !entry.Started ) {
 				entry.StartPosition = Root.transform.position;
 				entry.Started = true;
+				Sound.Play();
 			}
 			var entryTime = (t - entry.StartTime) / (1 - entry.StartTime);
 			entry.Transform.position = Vector3.Lerp(entry.StartPosition, entry.EndPosition, entryTime);
