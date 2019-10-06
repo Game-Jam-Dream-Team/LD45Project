@@ -9,7 +9,6 @@ public class CFinishZone : CAbstractCollisionZone
     {
         player.PlayerHide();
         player.PlayWinEffect();
-        GetComponent<AudioSource>()?.Play();
         FinishLevel();
     }
 
@@ -26,5 +25,10 @@ public class CFinishZone : CAbstractCollisionZone
         }
 
         ResultPanel.SetActive(true);
+
+        var source = GetComponent<AudioSource>();
+        if ( source ) {
+            source.Play();
+        }
     }
 }
