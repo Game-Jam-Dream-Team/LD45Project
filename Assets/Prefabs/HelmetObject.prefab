@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b086bd67e30cf54caa18bd0cca0fc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMass: 4
+  objectMass: 1
   tilt: 1
 --- !u!60 &3309752467029438570
 PolygonCollider2D:

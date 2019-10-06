@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3186869187492647548}
   - component: {fileID: 996959294378920779}
   m_Layer: 0
-  m_Name: SwordObject 1
+  m_Name: JetpackObject
   m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
