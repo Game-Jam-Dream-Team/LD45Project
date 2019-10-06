@@ -47,7 +47,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            ToMenu();
+            SceneManager.LoadScene("ToBeContinued");
         }
     }
 
