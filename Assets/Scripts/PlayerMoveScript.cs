@@ -7,6 +7,7 @@ public class PlayerMoveScript : MonoBehaviour
     public float playerMass = 0.5f;
     // float lastObjectVelocityK;
     float playerSpeedK;
+    public Vector3 playerSpeed => rb.velocity;
     public AudioClip deathCry;
     public ParticleSystem DeathEffect;
     public ParticleSystem WinEffect;
