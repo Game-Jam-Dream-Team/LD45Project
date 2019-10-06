@@ -691,6 +691,7 @@ GameObject:
   - component: {fileID: 1389561645}
   - component: {fileID: 1389561644}
   - component: {fileID: 1389561647}
+  - component: {fileID: 1389561648}
   m_Layer: 5
   m_Name: NextSceneButton
   m_TagString: Untagged
@@ -809,6 +810,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d62b3f0373a49f595e634c15a8f77f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &1389561648
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389561642}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 898c5ac987e1b4ee58e9d865124a486c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 898c5ac987e1b4ee58e9d865124a486c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1972961007
 GameObject:
   m_ObjectHideFlags: 0
