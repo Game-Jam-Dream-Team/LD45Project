@@ -10,6 +10,7 @@ public class PlayerMoveScript : MonoBehaviour
     public ParticleSystem DeathEffect;
     public ParticleSystem WinEffect;
     public AudioSource TakeSound;
+    public AudioSource ThrowSound;
 
     Vector3 dropDirection;
     Vector3 impulseDirection;
@@ -97,6 +98,7 @@ public class PlayerMoveScript : MonoBehaviour
 
 
         Pointer.Hide();
+        ThrowSound.Play();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
