@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameStarter : MonoBehaviour {
 	public ShipMovement Ship;
 	public ItemSpawn Item;
 	public PlayerSpawn Player;
+	public ShipSound ShipSound;
 
 	void Awake() {
 		if ( SceneController.Instance.WasReloaded ) {
@@ -24,5 +24,6 @@ public class GameStarter : MonoBehaviour {
 		if ( (Ship.Update() || Item.Update()) && Player.Update() ) {
 			enabled = false;
 		}
+		ShipSound.Update();
 	}
 }

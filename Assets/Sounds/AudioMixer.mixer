@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-8433230778644220424
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ship
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: a1f04bd95e02b410288a4c321136722b
+  m_Children: []
+  m_Volume: a50a8def6c0fd4ded9804d88a2e0e1fc
+  m_Pitch: edfa570d647694dda86802bb0f7e9894
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 356524927598402404}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-7317540168860021961
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -42,6 +61,7 @@ AudioMixerGroupController:
   - {fileID: 9102690225955181625}
   - {fileID: 8424849353572031976}
   - {fileID: -102081925289604460}
+  - {fileID: -8433230778644220424}
   m_Volume: 7fc978bcceec241439f2bfa317b0f0d3
   m_Pitch: 594acc8d1e4d54e1c8269baa607e31b5
   m_Send: 00000000000000000000000000000000
@@ -88,6 +108,8 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: fae67d839902d417c99385a91baa9998
     name: MusicVolume
+  - guid: a50a8def6c0fd4ded9804d88a2e0e1fc
+    name: ShipVolume
   m_AudioMixerGroupViews:
   - guids:
     - 7bb4316d53a0b4590bd0f95742083ead
@@ -97,6 +119,7 @@ AudioMixerController:
     - 08c31474904d644828c2476401e17341
     - b91ee52c588e94fa094ddaa304fb4216
     - 08737ce218d084140a0ae70c56206929
+    - a1f04bd95e02b410288a4c321136722b
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -149,6 +172,20 @@ AudioMixerSnapshotController:
     0be01e22371784b849d298b6b95fb5e1: -4.560346
     33cb95c6912b149f5b2b5fcaee9ecb55: 5.1526933
   m_TransitionOverrides: {}
+--- !u!244 &356524927598402404
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: a931c7a56c7b8478abb2f334e7c6e79a
+  m_EffectName: Attenuation
+  m_MixLevel: 325787647275540db9bd175f1fc5d04f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &1268582716864405885
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
