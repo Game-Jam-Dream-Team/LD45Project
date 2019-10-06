@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public class PlayerSpawn : StartStep {
 	public Transform Root;
+	public AudioSource Sound;
+
     float tilt = 3f;
 
 
@@ -41,6 +43,7 @@ public class PlayerSpawn : StartStep {
 		foreach ( var renderer in _target.GetComponentsInChildren<Renderer>() ) {
 			renderer.enabled = true;
 		}
+		Sound.Play();
 	}
 
 	protected override void OnFinish() {
