@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8637217946789508278}
   - component: {fileID: 8637217946789508279}
   - component: {fileID: 6781879928420236283}
-  - component: {fileID: 2031306490733719025}
+  - component: {fileID: 7960345992115817217}
   m_Layer: 0
   m_Name: tutorial 1
   m_TagString: Untagged
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
---- !u!95 &2031306490733719025
+--- !u!95 &7960345992115817217
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ Animator:
   m_GameObject: {fileID: 8637217946789508272}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 40bb9eb2a2a80f842b459b372ea88e1f, type: 2}
+  m_Controller: {fileID: 9100000, guid: f821b123ca446e443b496361ef60cf7f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
