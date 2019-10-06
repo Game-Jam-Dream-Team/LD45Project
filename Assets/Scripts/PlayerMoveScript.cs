@@ -9,7 +9,8 @@ public class PlayerMoveScript : MonoBehaviour
     public AudioClip deathCry;
     public ParticleSystem DeathEffect;
     public ParticleSystem WinEffect;
-       
+    public AudioSource TakeSound;
+
     Vector3 dropDirection;
     Vector3 impulseDirection;
     Vector3 currentPosition;
@@ -53,7 +54,7 @@ public class PlayerMoveScript : MonoBehaviour
     static readonly int HoldAnimation = Animator.StringToHash("PlayerHoldAnimation");
     static readonly int IdleAnimation = Animator.StringToHash("PlayerIdleAnimation");
 
-       
+
 
 
     void Awake()
@@ -116,7 +117,7 @@ public class PlayerMoveScript : MonoBehaviour
         {
             grabbedObject = obj.GetComponent<ObjectScript>();
             grabbedObject.transform.SetParent(_objectHolder);
-            grabbedObject.transform.localPosition = Vector3.zero; 
+            grabbedObject.transform.localPosition = Vector3.zero;
             grabbedObject.GetComponent<Collider2D>().enabled = false;
             grabbedObject.tilt = 0f;
 
@@ -127,6 +128,7 @@ public class PlayerMoveScript : MonoBehaviour
             rb.velocity = impulseDirection * grabbedObject.objectVelocityK;
 
             Pointer.Show();
+            TakeSound.Play();
         }
     }
 
