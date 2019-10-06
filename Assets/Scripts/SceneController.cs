@@ -32,7 +32,7 @@ public class SceneController : MonoBehaviour
     public void FirstLevel() {
         AnalyticsEvent.FirstInteraction();
         OnStartLevel(LevelIndex, false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void NextLevel() {
