@@ -513,7 +513,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RELOAD
+  m_Text: RESTART
 --- !u!1 &9078554468387073906
 GameObject:
   m_ObjectHideFlags: 0
