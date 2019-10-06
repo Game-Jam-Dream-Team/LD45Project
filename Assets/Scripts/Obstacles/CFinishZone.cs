@@ -2,8 +2,7 @@
 
 public class CFinishZone : CAbstractCollisionZone
 {
-    public GameObject ResultPanel;
-
+    private GameObject ResultPanel;
     private static GameObject ResultPanelPrefab;
 
     protected override void ProcessPlayerCollision(PlayerMoveScript player)
