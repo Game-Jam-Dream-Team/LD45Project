@@ -45,6 +45,10 @@ public class SceneController : MonoBehaviour
             OnStartLevel(LevelIndex, false);
             SceneManager.LoadScene(sceneName);
         }
+        else
+        {
+            ToMenu();
+        }
     }
 
     public void ToMenu() {
