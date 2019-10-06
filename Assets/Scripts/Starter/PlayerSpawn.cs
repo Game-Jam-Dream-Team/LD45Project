@@ -16,10 +16,12 @@ public class PlayerSpawn : StartStep {
 
     Transform _target;
 	Vector3 _endPosition;
+    PlayerMoveScript _player;
 
 	public void Init() {
 		var go = GameObject.FindGameObjectWithTag("player");
-		go.GetComponent<Collider2D>().enabled = false;
+        _player = go.GetComponent<PlayerMoveScript>();
+        go.GetComponent<Collider2D>().enabled = false;
 		go.GetComponentInChildren<DirectionPointer>().Hide();
 
 		foreach ( var renderer in go.GetComponentsInChildren<Renderer>() ) {
@@ -32,7 +34,7 @@ public class PlayerSpawn : StartStep {
 		_endPosition = _target.position;
 		_target.SetParent(Root);
 		_target.localPosition = Vector3.zero;
-
+        
     }
 
 	protected override void Perform(float t) {
@@ -47,19 +49,19 @@ public class PlayerSpawn : StartStep {
 		foreach ( var renderer in _target.GetComponentsInChildren<Renderer>() ) {
 			renderer.enabled = true;
 		}
-		if ( Sound ) {
+
+        _player.Pointer.Hide();
+
+        if ( Sound ) {
 			Sound.Play();
 		}
 	}
 
 	protected override void OnFinish() {
 		_target.GetComponent<Collider2D>().enabled = true;
-		_target.GetComponentInChildren<DirectionPointer>().Show();
         _target.GetComponent<RotatePlayerToCursor>().enabled = true;
+        _player.Pointer.Show();
         OnPlayerInitFinish.Invoke();
-
-
-        
 
         foreach (GameObject s in GameObject.FindGameObjectsWithTag("spawner")) { s.GetComponent<ObstaclesSpawner>()?.Activate(); }
     }

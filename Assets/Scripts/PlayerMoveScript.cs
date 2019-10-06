@@ -35,7 +35,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     DirectionPointer _pointer;
 
-    DirectionPointer Pointer {
+    public DirectionPointer Pointer {
         get {
             if ( !_pointer ) {
                 _pointer = GetComponentInChildren<DirectionPointer>();
