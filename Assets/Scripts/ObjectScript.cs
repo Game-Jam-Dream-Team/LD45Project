@@ -12,7 +12,11 @@ public class ObjectScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tilt =  Random.Range(-20, 20) / 5;
+        tilt =  Random.Range(-30, 30) / 5;
+        if (tilt == 0)
+        {
+            tilt = 1;
+        }
     }
 
     // Update is called once per frame

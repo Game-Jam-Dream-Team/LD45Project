@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectMass: 1.5
-  objectVelocityK: 0.6
+  objectVelocityK: 0.8
   tilt: 1
 --- !u!60 &7139839047091257369
 PolygonCollider2D:

@@ -143,5 +143,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectMass: 0.5
-  objectVelocityK: 0.6
+  objectVelocityK: 0.8
   tilt: 1
