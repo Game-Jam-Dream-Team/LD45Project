@@ -8,6 +8,7 @@ public class PlayerMoveScript : MonoBehaviour
     float playerSpeedK;
     public AudioClip deathCry;
     public ParticleSystem DeathEffect;
+    public ParticleSystem WinEffect;
        
     Vector3 dropDirection;
     Vector3 impulseDirection;
@@ -129,18 +130,20 @@ public class PlayerMoveScript : MonoBehaviour
         }
     }
 
-    public void playDeathSound()
-    {
-        GetComponent<AudioSource>().PlayOneShot(deathCry);
-    }
-
-    public void playerSpriteHide()
+    public void PlayerHide()
     {
         GetComponentsInChildren<SpriteRenderer>().ToList().ForEach(r => r.enabled = false);
+        GetComponent<Collider2D>().enabled = false;
     }
 
     public void PlayDeathEffect()
     {
+        GetComponent<AudioSource>().PlayOneShot(deathCry);
         DeathEffect.Play();
+    }
+
+    public void PlayWinEffect()
+    {
+        WinEffect.Play();
     }
 }

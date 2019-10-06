@@ -144,6 +144,7 @@ MonoBehaviour:
   playerMass: 0.5
   deathCry: {fileID: 8300000, guid: 2001af3f4b4339a48b7e2f8a7329e1bd, type: 3}
   DeathEffect: {fileID: 3909327384290851387}
+  WinEffect: {fileID: 8897939863804263347}
 --- !u!95 &7205223801250056808
 Animator:
   serializedVersion: 3
@@ -731,6 +732,12 @@ PrefabInstance:
 --- !u!4 &8897939863823662835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400018, guid: a40b64bf23366dc42a892af2c6ff6140,
+    type: 3}
+  m_PrefabInstance: {fileID: 8897939863823262817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8897939863804263347 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800018, guid: a40b64bf23366dc42a892af2c6ff6140,
     type: 3}
   m_PrefabInstance: {fileID: 8897939863823262817}
   m_PrefabAsset: {fileID: 0}

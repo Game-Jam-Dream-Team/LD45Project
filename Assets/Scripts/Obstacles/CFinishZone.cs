@@ -7,7 +7,8 @@ public class CFinishZone : CAbstractCollisionZone
 
     protected override void ProcessPlayerCollision(PlayerMoveScript player)
     {
-        player.gameObject.SetActive(false);
+        player.PlayerHide();
+        player.PlayWinEffect();
         FinishLevel();
     }
 

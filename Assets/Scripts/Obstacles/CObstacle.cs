@@ -12,11 +12,11 @@ public class CObstacle : CAbstractCollisionZone
 
     private IEnumerator CollisionCoroutine(PlayerMoveScript player)
     {
-        player.playerSpriteHide();
-        player.playDeathSound();
+        player.PlayerHide();
         player.PlayDeathEffect();
-        player.GetComponent<Collider2D>().enabled = false;
+
         yield return new WaitForSeconds(1f);
+
         SceneController.Instance.ReloadCurrent();
     }
 }
